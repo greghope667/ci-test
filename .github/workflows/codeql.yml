@@ -65,6 +65,13 @@ jobs:
     # - run: |
     #   echo "Run, Build Application using script"
     #   ./location_of_script_within_repo/buildscript.sh
+    
+    - name: Download CodeQL Coding Standards Bundle
+      run: |
+        gh release download -R advanced-security/codeql-coding-standards-bundle-releases v1.10.0 --pattern 'codeql-coding-standards.tar.gz'
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+      with:
+        tools: codeql-coding-standards.tar.gz
+        queries: autosar-default,cert-default
