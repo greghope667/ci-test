@@ -48,6 +48,8 @@ jobs:
     # Initializes the CodeQL tools for scanning.
     - name: CodeQL Initialize
       uses: github/codeql-action/init@v2
+      with:
+        queries: security-extended,security-and-quality
         #  with:
         #    tools: codeql-coding-standards.tar.gz
         #    queries: autosar-default,cert-default
